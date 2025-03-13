@@ -67,7 +67,7 @@ class _SendMoneyState extends State<SendMoney> {
               builder: (context) => PaymentSuccessScreen(
                 amount: _amountController.text,
                 recipientName: widget.recipientName,
-                name: widget.name ?? 'Unknown',
+                name: widget.name ?? 'Bala',
                 phone: widget.phone ?? "+91 8378239393",
               ),
             ),
@@ -118,8 +118,9 @@ class _SendMoneyState extends State<SendMoney> {
                           child: (widget.profilePic == null ||
                                   widget.profilePic!.isEmpty)
                               ? Text(
-                                  widget.name![0]
-                                      .toUpperCase(), // Show first letter
+                            widget.name != null && widget.name!.isNotEmpty
+                                ? widget.name![0].toUpperCase() // Show first letter
+                                : 'B',  // Show first letter
                                   style: const TextStyle(
                                       fontSize: 20,
                                       color: Colors.white,
@@ -129,10 +130,12 @@ class _SendMoneyState extends State<SendMoney> {
                         ),
                         SizedBox(height: screenHeight * 0.015),
                         TitleText(
-                          text: "${widget.name}",
+                          text: "${widget.name != null && widget.name!.isNotEmpty
+                              ? widget.name:'Bala'}",
                         ),
                         SubtitleText(
-                          text: "+91 ${widget.phone}",
+                          text: "+91 ${widget.phone != null && widget.phone!.isNotEmpty
+                              ? widget.phone:"8928928383"}",
                         ),
                       ],
                     ),

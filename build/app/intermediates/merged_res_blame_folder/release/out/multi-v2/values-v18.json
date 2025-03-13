@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.payonz.app-mergeReleaseResources-33:/values-v18/values-v18.xml",
+            "outputFile": "com.example.payonz.app-mergeReleaseResources-34:/values-v18/values-v18.xml",
             "map": [
                 {
                     "source": "/home/swomb/.gradle/caches/transforms-3/bb62d259040c3a20507420876d4ac13f/transformed/appcompat-1.6.1/res/values-v18/values-v18.xml",

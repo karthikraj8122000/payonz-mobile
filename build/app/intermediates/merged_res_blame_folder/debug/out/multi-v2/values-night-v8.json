@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.payonz.app-mergeDebugResources-33:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.payonz.app-mergeDebugResources-34:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/swomb/Documents/Projects/git projects/payonz/android/app/src/main/res/values-night/styles.xml",
+                    "source": "/home/swomb/Documents/Projects/git projects/payonz-mobile/android/app/src/main/res/values-night/styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

@@ -21,7 +21,7 @@ class AppRouter {
   static final GoRouter _router = GoRouter(
     navigatorKey: _routerKey,
     debugLogDiagnostics: true,
-    initialLocation: DashboardPage.routeName,
+    initialLocation: SplashScreen.routeName,
     observers: [
       GoRouterObserver(),
     ],// Default splash screen
