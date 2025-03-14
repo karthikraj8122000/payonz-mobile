@@ -461,7 +461,6 @@ class _FlipableWalletCardState extends State<FlipableWalletCard>
   }
 }
 
-// Custom painter for creating card background pattern
 class CardPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

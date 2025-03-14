@@ -82,8 +82,8 @@ class BankSelectionScreen extends StatelessWidget {
                 style: TextStyle(color: AppColors.card1)),
             SizedBox(height: 16),
             TextField(
-              style: TextStyle(color: AppColors.white),
-              cursorColor: AppColors.background,
+              style: TextStyle(color: AppColors.black),
+              cursorColor: AppColors.card1,
               decoration: InputDecoration(
                 filled: true,
                 fillColor: AppColors.borderLight,
@@ -94,6 +94,7 @@ class BankSelectionScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
                 ),
+                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.card1))
               ),
             ),
             SizedBox(height: 16),

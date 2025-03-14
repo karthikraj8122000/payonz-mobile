@@ -110,8 +110,9 @@ class _SelectLanguageScreenState extends State<SelectLanguageScreen> {
               ),
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Selected: ${selectedLanguage.toUpperCase()}")),
+                          SnackBar(content: Text("Selected Language is: ${selectedLanguage.toUpperCase()}")),
                         );
+                Navigator.pop(context);
               },
               child: Text('Done'),
             ),

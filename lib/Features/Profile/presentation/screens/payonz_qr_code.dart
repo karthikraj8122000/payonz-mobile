@@ -129,21 +129,6 @@ class _PayonzQrCodeState extends State<PayonzQrCode> {
                       ),),
                   ),
                   SizedBox(width: 20,),
-                  // Expanded(
-                  //   child: OutlinedButton(  onPressed: () {
-                  //   },
-                  //     style: OutlinedButton.styleFrom(side: BorderSide(color: AppColors.card1, width: 1),  ),
-                  //     child: Padding(
-                  //       padding: const EdgeInsets.only(top:8.0, bottom: 8.0),
-                  //       child: Row(
-                  //         children: [
-                  //           Icon(Icons.share, color: AppColors.card1,),
-                  //           SizedBox(width: 5,),
-                  //           Text("Share QR code", style: TextStyle(color:  AppColors.card1, fontSize: 14),  ),
-                  //         ],
-                  //       ),
-                  //     ),),
-                  // )
                   Expanded(
                     child: ElevatedButton(
                       onPressed: (){},

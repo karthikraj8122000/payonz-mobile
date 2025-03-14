@@ -89,7 +89,9 @@ class _SendMoneyState extends State<SendMoney> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: AppText(text: "Send Money To", fontSize: 18),
+        ),
         body: Center(
           child: SingleChildScrollView(
             child: Padding(

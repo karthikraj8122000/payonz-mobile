@@ -11,11 +11,11 @@ class TransactionsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
+        backgroundColor: AppColors.card1,
         elevation: 0,
         title: const Text(
           'Transactions',
-          style: TextStyle(color: AppTheme.textColor),
         ),
       ),
       body: SafeArea(
@@ -98,7 +98,6 @@ class TransactionsPage extends StatelessWidget {
 
   Widget _buildFilterSection(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -109,29 +108,35 @@ class TransactionsPage extends StatelessWidget {
             child: TextField(
               cursorColor: AppColors.card1,
               decoration: InputDecoration(
-                hintText: 'Search transactions',
-                border: InputBorder.none,
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.grey.shade600,
+                hintText: "Search transactions",
+                prefixIcon: Icon(Icons.search),
+                filled: true,
+                fillColor: AppColors.card1.withOpacity(0.1),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Colors.transparent), // Define border color
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(10)), // No border radius
                 ),
-                focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColors.card1)),
-                hintStyle: TextStyle(
-                  color: Colors.grey.shade600,
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: AppColors.card1), // Border color on focus
+                  borderRadius: BorderRadius.all(
+                      Radius.circular(10)), // No border radius
                 ),
               ),
             ),
           ),
           SizedBox(width: 5,),
           Container(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.symmetric(vertical: 16,horizontal: 10),
             decoration: BoxDecoration(
-              color: Colors.grey.withOpacity(0.1),
+              color: AppColors.grey.withOpacity(0.1),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: const Icon(
+            child: Icon(
               Icons.filter_list,
-              color: Colors.grey,
+              color: AppColors.grey.withOpacity(0.5),
             ),
           ),
         ],

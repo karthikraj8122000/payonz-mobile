@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'PayOnz',
         theme: AppTheme.lightTheme,
-        // home: const SplashScreen(),
       ),
     );
   }

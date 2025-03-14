@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Features/Home/presentation/widgets/contact_list.dart';
 import 'package:payonz/Features/Home/presentation/widgets/quick_actions.dart';
@@ -7,12 +11,56 @@ import 'package:payonz/Features/Home/presentation/widgets/wallet_card.dart';
 import 'package:payonz/Features/Profile/presentation/screens/profile.dart';
 import 'package:payonz/Shared/widgets/exit_app.dart';
 
+import '../../../../Shared/utils/network_connection_error_screen.dart';
 import '../../../Transaction/presentation/screens/transaction.dart';
 import '../widgets/offers_rewards.dart';
 
-class DashboardPage extends StatelessWidget {
+class DashboardPage extends StatefulWidget {
   static const String routeName = '/dashboard';
-  const DashboardPage({Key? key}) : super(key: key);
+  const DashboardPage({
+    Key? key,
+  }) : super(key: key ?? const ValueKey<String>('Dashboard'));
+
+  @override
+  _DashboardState createState() => _DashboardState();
+}
+
+class _DashboardState extends State<DashboardPage> {
+
+  late StreamSubscription _streamSubscription;
+  bool isDeviceConnected = false;
+  bool isDialogOpen = false;
+  final InternetConnectionChecker _connectionChecker =
+  InternetConnectionChecker.createInstance();
+
+  @override
+  void initState() {
+    checkInternetConnection();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _streamSubscription.cancel();
+  }
+
+  void checkInternetConnection() {
+    _streamSubscription =
+        Connectivity().onConnectivityChanged.listen((result) async {
+          bool hasConnection = await _connectionChecker.hasConnection;
+
+          if (!hasConnection && !isDialogOpen) {
+            var result = await GoRouter.of(context).push(
+              NetworkErrorScreen.routeName,
+            );
+          }
+          if (mounted) {
+            setState(() {
+              isDeviceConnected = hasConnection;
+            });
+          }
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +77,6 @@ class DashboardPage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextField(
-                      // keyboardType: TextInputType.number,
                       cursorColor: AppColors.card1,
                       decoration: InputDecoration(
                         hintText: "Pay by name or phone Number ",

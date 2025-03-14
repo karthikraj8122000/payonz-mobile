@@ -16,6 +16,7 @@ import '../Features/Auth/presentation/screens/sim_selection.dart';
 import '../Features/Bank/presentation/screens/pay-contacts.dart';
 import '../Features/Bank/presentation/screens/pay-phonenumber.dart';
 import '../Features/Profile/presentation/screens/language.dart';
+import '../Shared/utils/network_connection_error_screen.dart';
 
 class AppRouter {
   static final GlobalKey<NavigatorState> _routerKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -108,7 +109,13 @@ class AppRouter {
         path: SelectLanguageScreen.routeName,
         builder: (_, __) =>  SelectLanguageScreen(),
       ),
-
+      GoRoute(
+        name: NetworkErrorScreen.routeName,
+        path: NetworkErrorScreen.routeName,
+        builder: (context, state) {
+          return NetworkErrorScreen();
+        },
+      ),
     ],
   );
 

@@ -44,8 +44,9 @@ class BankDetailScreen extends StatelessWidget {
                 Row(
                   children: [
                     CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://cdn.pixabay.com/photo/2023/12/26/04/55/bank-8469480_1280.png'),
+                      backgroundColor: Colors.transparent,
+                      backgroundImage: AssetImage(
+                          bank.logo),
                       radius: 24,
                     ),
                     SizedBox(width: 16),
