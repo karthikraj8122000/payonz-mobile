@@ -72,33 +72,32 @@ class DashboardPage extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 24),
-              Container(
-                  padding: EdgeInsets.all(12),
-                  width: double.infinity,
-                  child: FlipableWalletCard()),
-              const SizedBox(height: 24),
-              const QuickActions(),
-              const SizedBox(height: 20),
-              const ContactList(),
-              const SizedBox(height: 20),
-              OffersAndRewards(),
-              _recentTransactionSection(context),
-              _inviteSection()
             ],
           ),
         ),
-       
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 24),
+                Container(
+                    padding: EdgeInsets.all(12),
+                    width: double.infinity,
+                    child: FlipableWalletCard()),
+                const SizedBox(height: 24),
+                const QuickActions(),
+                const SizedBox(height: 20),
+                const ContactList(),
+                const SizedBox(height: 20),
+                OffersAndRewards(),
+                _recentTransactionSection(context),
+                _inviteSection()
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
