@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
+import 'package:payonz/Features/Bank/presentation/screens/pay-contacts.dart';
+import 'package:payonz/Features/Bank/presentation/screens/pay-phonenumber.dart';
 import 'package:payonz/Features/Home/data/models/quick_actions_model.dart';
 import 'package:payonz/Features/QRPayment/presentation/screens/qrscanner.dart';
 
@@ -57,6 +59,10 @@ class QuickActions extends StatelessWidget {
 // GoRouter.of(context).push(QRScanner.routeName);
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => QRScanner()));
+    }if(title == "Pay\nContacts"){
+        GoRouter.of(context).push(PayContacts.routeName);
+    }if(title == "Phone\nNumber"){
+      GoRouter.of(context).push(PayPhoneNumber.routeName);
     }else{
     }
   }

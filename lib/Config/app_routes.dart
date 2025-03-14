@@ -13,6 +13,9 @@ import 'package:payonz/Features/Splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../Features/Auth/presentation/screens/sim_selection.dart';
+import '../Features/Bank/presentation/screens/pay-contacts.dart';
+import '../Features/Bank/presentation/screens/pay-phonenumber.dart';
+import '../Features/Profile/presentation/screens/language.dart';
 
 class AppRouter {
   static final GlobalKey<NavigatorState> _routerKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -89,6 +92,21 @@ class AppRouter {
         name: ReferFriends.routeName,
         path: ReferFriends.routeName,
         builder: (_, __) =>  ReferFriends(),
+      ),
+      GoRoute(
+        name: PayContacts.routeName,
+        path: PayContacts.routeName,
+        builder: (_, __) =>  PayContacts(),
+      ),
+      GoRoute(
+        name: PayPhoneNumber.routeName,
+        path: PayPhoneNumber.routeName,
+        builder: (_, __) =>  PayPhoneNumber(),
+      ),
+      GoRoute(
+        name: SelectLanguageScreen.routeName,
+        path: SelectLanguageScreen.routeName,
+        builder: (_, __) =>  SelectLanguageScreen(),
       ),
 
     ],

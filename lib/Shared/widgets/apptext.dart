@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Define individual classes for different text styles
 // HeadingText
@@ -197,6 +198,44 @@ class BodyText extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
+    );
+  }
+}
+
+class AppText extends StatelessWidget {
+  final String text;
+  final double fontSize;
+  final FontWeight fontWeight;
+  final Color color;
+  final TextAlign? textAlign;
+  final TextStyle? fontStyle;
+  final TextOverflow overflow;
+
+  // Constructor with default values
+  const AppText({
+    Key? key,
+    required this.text,
+    required this.fontSize,
+    this.fontWeight = FontWeight.normal,
+    this.color = Colors.black,
+    this.textAlign,
+    this.fontStyle,
+    this.overflow = TextOverflow.ellipsis, // Default to ellipsis
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textAlign: textAlign,
+      style: fontStyle ??
+          GoogleFonts.poppins(
+            color: color,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+          ),
+      overflow: overflow,
+      maxLines: 2, // Restrict to 2 lines
     );
   }
 }
