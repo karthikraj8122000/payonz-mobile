@@ -72,34 +72,38 @@ class DashboardPage extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+          ],
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 24),
+              Container(
+                  padding: EdgeInsets.all(12),
+                  width: double.infinity,
+                  child: FlipableWalletCard()),
+              const SizedBox(height: 24),
+              const QuickActions(),
+              const SizedBox(height: 20),
+              const ContactList(),
+              const SizedBox(height: 20),
+              OffersAndRewards(),
+              _recentTransactionSection(context),
+              _inviteSection()
             ],
           ),
         ),
-        body: SafeArea(
-          child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 24),
-                Container(padding: EdgeInsets.all(12),width: double.infinity,child: FlipableWalletCard()),
-                const SizedBox(height: 24),
-                const QuickActions(),
-                const SizedBox(height: 20),
-                const ContactList(),
-                const SizedBox(height: 20),
-                OffersAndRewards(),
-                _recentTransactionSection(context),
-                _inviteSection()
-              ],
-            ),
-          ),
-        ),
+       
       ),
     );
   }
 
-  Widget _inviteSection(){
+  Widget _inviteSection() {
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -134,8 +138,7 @@ class DashboardPage extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
-                    color: AppColors.black
-                ),
+                    color: AppColors.black),
               ),
             ),
             SizedBox(height: 10),
@@ -148,8 +151,14 @@ class DashboardPage extends StatelessWidget {
               child: RichText(
                 text: const TextSpan(
                   children: [
-                    TextSpan(text: 'Copy your code:', style: TextStyle(color: AppColors.black)),
-                    TextSpan(text: '84gd3', style: TextStyle(color: AppColors.card1, fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: 'Copy your code:',
+                        style: TextStyle(color: AppColors.black)),
+                    TextSpan(
+                        text: '84gd3',
+                        style: TextStyle(
+                            color: AppColors.card1,
+                            fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
@@ -170,7 +179,10 @@ class DashboardPage extends StatelessWidget {
                       "Invite",
                       style: TextStyle(color: Colors.black, fontSize: 18),
                     ),
-                    Icon(Icons.share,color: AppColors.card1,)
+                    Icon(
+                      Icons.share,
+                      color: AppColors.card1,
+                    )
                   ],
                 ),
               ),
@@ -181,8 +193,7 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-
-  Widget _recentTransactionSection(BuildContext context){
+  Widget _recentTransactionSection(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -218,7 +229,7 @@ class DashboardPage extends StatelessWidget {
               ),
               _buildTransactionItem(
                 icon: Icons.fastfood_outlined,
-                color:AppColors.card1.withOpacity(0.5),
+                color: AppColors.card1.withOpacity(0.5),
                 title: 'Food & Drinks',
                 date: 'Mar 3, 2025',
                 amount: '- ₹850.00',
@@ -237,13 +248,14 @@ class DashboardPage extends StatelessWidget {
               ),
               child: Text(
                 "View All",
-                style: TextStyle(color:  AppColors.card1, fontSize: 14),
+                style: TextStyle(color: AppColors.card1, fontSize: 14),
               ),
             ),
           ),
           const SizedBox(height: 16),
         ],
-      ),);
+      ),
+    );
   }
 
   Widget _buildTransactionItem({
