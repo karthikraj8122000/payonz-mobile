@@ -8,47 +8,72 @@ import 'fetching_loadibg_screens.dart';
 
 class BankSelectionScreen extends StatelessWidget {
   final List<MyBank> banks = [
-    MyBank(name: 'State Bank of India', icon: Icons.account_balance),
-    MyBank(name: 'Indian Bank', icon: Icons.account_balance_wallet),
-    MyBank(name: 'Canara Bank', icon: Icons.account_balance),
-    MyBank(name: 'Indian Overseas Bank', icon: Icons.account_balance_wallet),
-    MyBank(name: 'HDFC Bank', icon: Icons.account_balance),
-    MyBank(name: 'Karur Vysya Bank', icon: Icons.account_balance_wallet),
-    MyBank(name: 'Union Bank Of India', icon: Icons.account_balance),
-    MyBank(name: 'Kotak Mahindra Bank', icon: Icons.account_balance_wallet),
-    MyBank(name: 'Axis Bank', icon: Icons.account_balance),
+    MyBank(
+      name: 'State Bank of India',
+      logo: 'assets/images/sbi.png',
+    ),
+    MyBank(
+      name: 'Indian Bank',
+      logo: 'assets/images/indianbank.png',
+    ),
+    MyBank(
+      name: 'Canara Bank',
+      logo: 'assets/images/canara.png',
+    ),
+    MyBank(
+      name: 'Indian Overseas Bank',
+      logo: 'assets/images/iob.png',
+    ),
+    MyBank(
+      name: 'HDFC Bank',
+      logo: 'assets/images/hdfc.png',
+    ),
+    MyBank(
+      name: 'Karur Vysya Bank',
+      logo: 'assets/images/kvb.jpeg',
+    ),
+    MyBank(
+      name: 'Union Bank Of India',
+      logo: 'assets/images/union.png',
+    ),
+    MyBank(
+      name: 'Kotak Mahindra Bank',
+      logo: 'assets/images/kotak.png',
+    ),
+    MyBank(
+      name: 'Axis Bank',
+      logo: 'assets/images/axis.png',
+    ),
   ];
 
   final List<MyBank> allBanks = List.generate(
       10,
-      (index) =>
-          MyBank(name: 'Bank ${index + 1}', icon: Icons.account_balance));
+      (index) => MyBank(
+            name: 'Bank ${index + 1}',
+            logo: 'https://example.com/bank${index + 1}_logo.png',
+          ));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.black,
       appBar: AppBar(
         foregroundColor: Colors.white,
         backgroundColor: AppColors.card1,
-        // backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: Icon(Icons.help_outline),
-        )],
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Icon(Icons.help_outline),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TitleText(
-              text: 'Add Bank Linked To',
-            ),
-            TitleText(
-              text: '+91 9876543210',
-            ),
+            TitleText(text: 'Add Bank Linked To'),
+            TitleText(text: '+91 9876543210'),
             SizedBox(height: 8),
             Text('This is required to set up your UPI account',
                 style: TextStyle(color: Colors.grey)),
@@ -61,9 +86,8 @@ class BankSelectionScreen extends StatelessWidget {
               cursorColor: AppColors.background,
               decoration: InputDecoration(
                 filled: true,
-                fillColor: AppColors.card1,
+                fillColor: AppColors.borderLight,
                 hintText: 'Search By Bank Name',
-                focusColor: AppColors.white,
                 hintStyle: TextStyle(color: Colors.grey),
                 prefixIcon: Icon(Icons.search, color: Colors.grey),
                 border: OutlineInputBorder(
@@ -74,10 +98,9 @@ class BankSelectionScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             TitleText(
-              text: 'Popular Banks',
-              color: AppColors.darkPrimaryColor,
-              size: 18,
-            ),
+                text: 'Popular Banks',
+                color: AppColors.darkPrimaryColor,
+                size: 18),
             SizedBox(height: 16),
             GridView.builder(
               shrinkWrap: true,
@@ -92,15 +115,12 @@ class BankSelectionScreen extends StatelessWidget {
                 return BankGridItem(
                   bank: banks[index],
                   onTap: () {
-                    // Show FetchingDetailsScreen first
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => FetchingDetailsScreen(),
                       ),
                     );
-
-                    // Delay for 2 seconds, then show AccountAddedSuccess screen
                     Future.delayed(const Duration(seconds: 2), () {
                       Navigator.pushReplacement(
                         context,
@@ -108,8 +128,6 @@ class BankSelectionScreen extends StatelessWidget {
                           builder: (context) => AccountAddedSuccess(),
                         ),
                       );
-
-                      // Delay for another 2 seconds, then navigate to BankDetailScreen
                       Future.delayed(const Duration(seconds: 2), () {
                         Navigator.pushReplacement(
                           context,
@@ -126,10 +144,7 @@ class BankSelectionScreen extends StatelessWidget {
             ),
             SizedBox(height: 16),
             TitleText(
-              text: 'All Banks',
-              color: AppColors.darkPrimaryColor,
-              size: 18,
-            ),
+                text: 'All Banks', color: AppColors.darkPrimaryColor, size: 18),
             SizedBox(height: 8),
             ListView.builder(
               shrinkWrap: true,
@@ -137,17 +152,30 @@ class BankSelectionScreen extends StatelessWidget {
               itemCount: banks.length,
               itemBuilder: (context, index) {
                 return Card(
-                  elevation: 2,
+                  elevation: 1,
                   margin: EdgeInsets.symmetric(vertical: 4),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: ListTile(
-                    leading: Icon(banks[index].icon, color: AppColors.card1),
-                    title: Text(
-                      banks[index].name,
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                    leading: 
+                    CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      backgroundImage:AssetImage(banks[index].logo)
+                    ),
+                    // Image.network(
+                    //   banks[index].logo,
+                    //   width: 40,
+                    //   height: 40,
+                    //   fit: BoxFit.cover,
+                    // ),
+                    title: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        banks[index].name,
+                        style:
+                            TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
                     ),
                     trailing: Icon(Icons.arrow_forward_ios,
                         size: 16, color: Colors.grey),

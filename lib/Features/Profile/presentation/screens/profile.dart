@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Features/Bank/presentation/screens/bank_account_splash.dart';
 import 'package:payonz/Features/Profile/presentation/screens/payonz_qr_code.dart';
+import 'package:payonz/Features/Profile/presentation/screens/settings_page/settings.dart';
 import 'package:payonz/Shared/widgets/apptext.dart';
+
 import '../../../Bank/presentation/screens/bank_accounts.dart';
+import '../../../Bank/presentation/screens/my_accounts.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String routeName = '/profile';
@@ -18,11 +22,12 @@ class ProfilePage extends StatelessWidget {
             SliverAppBar(
               expandedHeight: 300,
               backgroundColor: Colors.transparent,
+              foregroundColor: AppColors.white,
               floating: false,
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 collapseMode: CollapseMode.parallax,
-                background: _buildProfileHeader(),
+                background: _buildProfileHeader(context),
               ),
             ),
           ];
@@ -32,10 +37,11 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileHeader() {
+  Widget _buildProfileHeader(BuildContext context) {
     return Stack(
       alignment: Alignment.center,
       children: [
+        // sliver App Bar container
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -48,12 +54,44 @@ class ProfilePage extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.white,
-              backgroundImage: NetworkImage(
-                'https://storage.googleapis.com/a1aa/image/b_YO1Yqna3NsecxruoS1W4u6zSvPTLiFB4Np-BmNfs0.jpg',
-              ),
+            //Pofile IMage
+            // CircleAvatar(
+            //   radius: 50,
+            //   backgroundColor: Colors.white,
+            //   backgroundImage: NetworkImage(
+            //     'https://storage.googleapis.com/a1aa/image/b_YO1Yqna3NsecxruoS1W4u6zSvPTLiFB4Np-BmNfs0.jpg',
+            //   ),
+            // ),
+
+            Stack(
+              children: [
+                CircleAvatar(
+                  radius: 50,
+                  backgroundImage: NetworkImage(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGD0BcxwuvdI1H-S35GmT43vP2MBIdCgyeIA&s',
+                  ),
+                ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: CircleAvatar(
+                      radius: 15,
+                      backgroundColor: AppColors.white,
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PayonzQrCode()));
+                        },
+                        icon: Icon(
+                          Icons.qr_code_scanner,
+                          color: AppColors.card1,
+                          size: 15,
+                        ),
+                      )),
+                ),
+              ],
             ),
             SizedBox(height: 16),
             TitleText(text: 'Karthik', color: Colors.white),
@@ -62,21 +100,21 @@ class ProfilePage extends StatelessWidget {
             SubtitleText(text: 'Karthik@gmailcom@okaxis'),
             SizedBox(height: 16),
             //Reward earned section
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 7),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(Icons.emoji_events, color: Colors.amber),
-                  SizedBox(width: 8),
-                  SubtitleText(text: '₹20 Rewards earned'),
-                ],
-              ),
-            ),
+            // Container(
+            //   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 7),
+            //   decoration: BoxDecoration(
+            //     color: Colors.white.withOpacity(0.2),
+            //     borderRadius: BorderRadius.circular(30),
+            //   ),
+            //   child: Row(
+            //     mainAxisSize: MainAxisSize.min,
+            //     children: [
+            //       Icon(Icons.emoji_events, color: Colors.amber),
+            //       SizedBox(width: 8),
+            //       SubtitleText(text: '₹20 Rewards earned'),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ],
@@ -90,23 +128,26 @@ class ProfilePage extends StatelessWidget {
         Row(
           children: [
             Expanded(child: _buildRewardCard()),
-            SizedBox(width: 10,),
+            SizedBox(
+              width: 10,
+            ),
             Expanded(child: _buildReferFriendCard()),
           ],
         ),
         SizedBox(height: 20),
         _buildSetPaymentMethod(context),
         _buildMenuItem(
-            Icons.payments_outlined, 'Pay with credit or debit cards', 'Contactless payments, bills, and more',
-                () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => BankAccountsPage()));
-            }),
+            Icons.payments_outlined,
+            'Pay with credit or debit cards',
+            'Contactless payments, bills, and more', () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MyAccounts()));
+        }),
         _buildMenuItem(Icons.qr_code, 'Your OR code',
             'Use to receive money from any PayONz app', () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PayonzQrCode()));
-            }),
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => PayonzQrCode()));
+        }),
         _buildMenuItem(
             Icons.autorenew, 'Autopay', 'No pending requests', () {}),
         // _buildMenuItem(Icons.business, 'Pay businesses', 'Credit/Debit card',
@@ -114,12 +155,14 @@ class ProfilePage extends StatelessWidget {
         //       Navigator.push(
         //           context, MaterialPageRoute(builder: (context) => MyAccounts()));
         //     }),
-        _buildMenuItem(Icons.settings, 'Settings', '', () {}),
+        _buildMenuItem(Icons.settings, 'Settings', '', () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => SettingsScreen()));
+        }),
         _buildMenuItem(Icons.person_pin, 'Manage PayONz account', '', () {}),
         _buildMenuItem(Icons.question_mark, 'Get help', '', () {}),
         _buildMenuItem(Icons.language, 'Language', 'English', () {}),
       ],
-
     );
   }
 
@@ -130,7 +173,7 @@ class ProfilePage extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: ListTile(
-        leading: Icon(icon, color: Color(0xFF3D5AFE)),
+        leading: Icon(icon, color: AppColors.appPrimary),
         title: Text(title,
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
         subtitle: subtitle.isNotEmpty
@@ -236,11 +279,14 @@ class ProfilePage extends StatelessWidget {
             // First Payment Option (Bank Account)
             InkWell(
               onTap: () {
-                GoRouter.of(context).push(BankAccountsScreen.routeName);
+                // GoRouter.of(context).push(BankAccountsScreen.routeName);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyAccounts()));
               },
               child: Row(
                 children: [
-                  Icon(Icons.account_balance, color: Color(0xFF3D5AFE), size: 24),
+                  Icon(Icons.account_balance,
+                      color: AppColors.appPrimary, size: 24),
                   SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -275,7 +321,8 @@ class ProfilePage extends StatelessWidget {
               },
               child: Row(
                 children: [
-                  Icon(Icons.credit_card, color: Color(0xFF3D5AFE), size: 24),
+                  Icon(Icons.credit_card,
+                      color: AppColors.appPrimary, size: 24),
                   SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
