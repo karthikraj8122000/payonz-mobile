@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Features/Bank/presentation/screens/bank_account_splash.dart';
+import 'package:payonz/Features/Home/presentation/screens/refer-friends.dart';
+import 'package:payonz/Features/Profile/presentation/screens/language.dart';
 import 'package:payonz/Features/Profile/presentation/screens/payonz_qr_code.dart';
-import 'package:payonz/Features/Profile/presentation/screens/settings_page/addCredit_Debit_card.dart';
 import 'package:payonz/Features/Profile/presentation/screens/settings_page/settings.dart';
 import 'package:payonz/Shared/widgets/apptext.dart';
 
 import '../../../Bank/presentation/screens/bank_accounts.dart';
 import '../../../Bank/presentation/screens/my_accounts.dart';
+import '../../../Home/presentation/screens/rewards.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String routeName = '/profile';
@@ -132,7 +134,7 @@ class ProfilePage extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            Expanded(child: _buildReferFriendCard()),
+            Expanded(child: _buildReferFriendCard(context)),
           ],
         ),
         SizedBox(height: 20),
@@ -141,10 +143,10 @@ class ProfilePage extends StatelessWidget {
             Icons.payments_outlined,
             'Pay with credit or debit cards',
             'Contactless payments, bills, and more', () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => AddCreditAndDebitCard()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MyAccounts()));
         }),
-        _buildMenuItem(Icons.qr_code, 'Your OR code',
+        _buildMenuItem(Icons.qr_code, 'Your QR code',
             'Use to receive money from any PayONz app', () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => PayonzQrCode()));
@@ -162,7 +164,9 @@ class ProfilePage extends StatelessWidget {
         }),
         _buildMenuItem(Icons.person_pin, 'Manage PayONz account', '', () {}),
         _buildMenuItem(Icons.question_mark, 'Get help', '', () {}),
-        _buildMenuItem(Icons.language, 'Language', 'English', () {}),
+        _buildMenuItem(Icons.language, 'Language', 'English', () {
+          GoRouter.of(context).push(SelectLanguageScreen.routeName);
+        }),
       ],
     );
   }
@@ -188,93 +192,74 @@ class ProfilePage extends StatelessWidget {
 
   Widget _buildRewardCard(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-                // GoRouter.of(context).push(ReferFriends.routeName);
-      },
+      onTap: ()=>GoRouter.of(context).push(RewardScreen.routeName),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.yellow.withOpacity(0.2),
           borderRadius: BorderRadius.circular(30),
         ),
-        padding: EdgeInsets.all(12),
-        child: Row(
-          mainAxisAlignment:
-              MainAxisAlignment.center, // Center all items horizontally
-          children: [
-            Icon(
-              Icons.emoji_events,
-              color: Colors.orange,
-              size: 30,
-            ),
-            SizedBox(width: 10), // Space between icon and text
-            Column(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start, // Align text to the left
-              mainAxisSize: MainAxisSize.min, // Minimize column height
-              children: [
-                Text(
-                  "₹70",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.orange,
-                  ),
+        // padding: EdgeInsets.all(12),
+        child: ListTile(
+          leading: Icon(Icons.emoji_events, color: Colors.orange, size: 30),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "₹70",
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orange,
                 ),
-                Text(
-                  "Rewards earned",
-                  style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: 12,
-                  ),
+              ),
+              SizedBox(height: 5),
+              Text(
+                "Rewards earned",
+                style: TextStyle(
+                  color: Colors.orange,
+                  fontSize: 10,
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildReferFriendCard() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.green.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(30),
-      ),
-      padding: EdgeInsets.all(12),
-      child: Row(
-        mainAxisAlignment:
-            MainAxisAlignment.center, // Center all items horizontally
-        children: [
-          Icon(
-            Icons.people_sharp,
-            color: Colors.green,
-            size: 30,
-          ),
-          SizedBox(width: 10), // Space between icon and text
-          Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start, // Align text to the left
-            mainAxisSize: MainAxisSize.min, // Minimize column height
+  Widget _buildReferFriendCard(BuildContext context) {
+    return GestureDetector(
+      onTap: ()=>GoRouter.of(context).push(ReferFriends.routeName),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.green.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        // padding: EdgeInsets.all(12),
+        child: ListTile(
+          leading: Icon(Icons.group, color: Colors.green, size: 30),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "₹Get 201",
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.bold,
                   color: Colors.green,
                 ),
               ),
+              SizedBox(height: 5),
               Text(
                 "Refer a friend",
                 style: TextStyle(
                   color: Colors.green,
-                  fontSize: 12,
+                  fontSize: 10,
                 ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }
