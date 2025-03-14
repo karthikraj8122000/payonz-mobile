@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
-import 'package:payonz/appButton.dart';
+import 'package:payonz/Shared/widgets/appButton.dart';
 
 class AddCreditAndDebitCard extends StatelessWidget {
   const AddCreditAndDebitCard({super.key});

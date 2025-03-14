@@ -3,7 +3,7 @@ import 'package:payonz/Config/app_routes.dart';
 import 'package:payonz/Features/Bank/presentation/screens/add_bank_account.dart';
 import 'package:flutter/material.dart';
 import 'package:payonz/Features/Home/presentation/screens/dashboard.dart';
-import 'package:payonz/appButton.dart';
+import 'package:payonz/Shared/widgets/appButton.dart';
 import 'package:provider/provider.dart';
 import '../../../../Core/Constants/app_colors.dart';
 import '../../../../Core/theme/app_theme.dart';

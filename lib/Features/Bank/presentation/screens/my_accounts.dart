@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Features/Bank/presentation/screens/my_cards_details.dart';
-import 'package:payonz/appButton.dart';
+import 'package:payonz/Shared/widgets/appButton.dart';
 import 'bank_selection_screen.dart';
 
 class MyAccounts extends StatelessWidget {

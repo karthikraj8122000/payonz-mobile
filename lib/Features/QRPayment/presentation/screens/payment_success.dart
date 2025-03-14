@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Features/Home/presentation/screens/dashboard.dart';
-import 'package:payonz/appButton.dart';
+import 'package:payonz/Shared/widgets/appButton.dart';
 
 class PaymentSuccessScreen extends StatefulWidget {
   final String amount;

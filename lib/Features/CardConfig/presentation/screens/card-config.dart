@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Shared/widgets/apptext.dart';
-import 'package:payonz/appButton.dart';
+import 'package:payonz/Shared/widgets/appButton.dart';
 
 void main() {
   runApp(MaterialApp(home: ConfigureCardPage()));
