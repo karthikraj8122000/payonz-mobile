@@ -36,6 +36,8 @@ class _NotificationsAndEmailsScreenState extends State {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+          backgroundColor: AppColors.appPrimary,
+        foregroundColor: AppColors.white,
         title: Text('Notifications and Emails'),
         // backgroundColor: AppColors.appPrimary,
         // foregroundColor: AppColors.white,
