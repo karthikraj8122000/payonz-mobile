@@ -23,15 +23,28 @@ class _PayonzQrCodeState extends State<PayonzQrCode> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('QrCode'),
+        foregroundColor: Colors.white,
+        backgroundColor: AppColors.card1,
+        // title: Text('QrCode'),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Icon(Icons.file_download_outlined,),
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: Icon(Icons.more_vert,),
+          // Padding(
+          //   padding: const EdgeInsets.only(right: 8.0),
+          //   child: Icon(Icons.more_vert,),
+          // ),
+          PopupMenuButton<String>(
+            onSelected: (value) {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Selected: $value")));
+            },
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem(value: "Set Amount", child: Text("Set Amount")),
+              PopupMenuItem(value: "Help", child: Text("Get Help")),
+              PopupMenuItem(value: "feedback", child: Text("Send feedback")),
+            ],
+            icon: Icon(Icons.more_vert),
           ),
         ],
       ),
