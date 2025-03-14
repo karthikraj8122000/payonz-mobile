@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Features/Profile/presentation/screens/settings_page/about_screen.dart';
+import 'package:payonz/Features/Profile/presentation/screens/settings_page/addCredit_Debit_card.dart';
+import 'package:payonz/Features/Profile/presentation/screens/settings_page/help&feedback_screen.dart';
 import 'package:payonz/Features/Profile/presentation/screens/settings_page/notifications&Emails.dart';
 import 'package:payonz/Features/Profile/presentation/screens/settings_page/personalInfo_screen.dart';
 import 'package:payonz/Features/Profile/presentation/screens/settings_page/privacy&security_screen.dart';
@@ -10,7 +12,8 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.appPrimary,
+        foregroundColor: AppColors.white,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -73,7 +76,7 @@ class SettingsScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HelpScreen()),
+                  MaterialPageRoute(builder: (context) => HelpAndFeedback()),
                 );
               },
             ),
@@ -132,15 +135,7 @@ class SettingsItem extends StatelessWidget {
   }
 }
 
-class HelpScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Help & Feedback')),
-      body: Center(child: Text('Help & Feedback Screen')),
-    );
-  }
-}
+
 
 class LockScreen extends StatelessWidget {
   @override

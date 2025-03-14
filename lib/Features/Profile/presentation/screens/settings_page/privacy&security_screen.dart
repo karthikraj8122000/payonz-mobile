@@ -26,6 +26,8 @@ class _PrivacyAndSecurityScreenState extends State<PrivacyAndSecurityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: AppColors.appPrimary,
+        foregroundColor: AppColors.white,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {

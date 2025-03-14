@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:payonz/Core/Constants/app_colors.dart';
 import 'package:payonz/Features/Bank/presentation/screens/bank_account_splash.dart';
 import 'package:payonz/Features/Profile/presentation/screens/payonz_qr_code.dart';
+import 'package:payonz/Features/Profile/presentation/screens/settings_page/addCredit_Debit_card.dart';
 import 'package:payonz/Features/Profile/presentation/screens/settings_page/settings.dart';
 import 'package:payonz/Shared/widgets/apptext.dart';
 
@@ -127,7 +128,7 @@ class ProfilePage extends StatelessWidget {
       children: [
         Row(
           children: [
-            Expanded(child: _buildRewardCard()),
+            Expanded(child: _buildRewardCard(context)),
             SizedBox(
               width: 10,
             ),
@@ -140,8 +141,8 @@ class ProfilePage extends StatelessWidget {
             Icons.payments_outlined,
             'Pay with credit or debit cards',
             'Contactless payments, bills, and more', () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MyAccounts()));
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddCreditAndDebitCard()));
         }),
         _buildMenuItem(Icons.qr_code, 'Your OR code',
             'Use to receive money from any PayONz app', () {
@@ -185,33 +186,48 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildRewardCard() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.yellow.withOpacity(0.2),
-        borderRadius: BorderRadius.circular(30),
-      ),
-      // padding: EdgeInsets.all(12),
-      child: ListTile(
-        leading: Icon(Icons.emoji_events, color: Colors.orange, size: 30),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildRewardCard(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+                // GoRouter.of(context).push(ReferFriends.routeName);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.yellow.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(30),
+        ),
+        padding: EdgeInsets.all(12),
+        child: Row(
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Center all items horizontally
           children: [
-            Text(
-              "₹70",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.orange,
-              ),
+            Icon(
+              Icons.emoji_events,
+              color: Colors.orange,
+              size: 30,
             ),
-            SizedBox(height: 5),
-            Text(
-              "Rewards earned",
-              style: TextStyle(
-                color: Colors.orange,
-                fontSize: 10,
-              ),
+            SizedBox(width: 10), // Space between icon and text
+            Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Align text to the left
+              mainAxisSize: MainAxisSize.min, // Minimize column height
+              children: [
+                Text(
+                  "₹70",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.orange,
+                  ),
+                ),
+                Text(
+                  "Rewards earned",
+                  style: TextStyle(
+                    color: Colors.orange,
+                    fontSize: 12,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
@@ -225,30 +241,40 @@ class ProfilePage extends StatelessWidget {
         color: Colors.green.withOpacity(0.2),
         borderRadius: BorderRadius.circular(30),
       ),
-      // padding: EdgeInsets.all(12),
-      child: ListTile(
-        leading: Icon(Icons.group, color: Colors.green, size: 30),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "₹Get 201",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
+      padding: EdgeInsets.all(12),
+      child: Row(
+        mainAxisAlignment:
+            MainAxisAlignment.center, // Center all items horizontally
+        children: [
+          Icon(
+            Icons.people_sharp,
+            color: Colors.green,
+            size: 30,
+          ),
+          SizedBox(width: 10), // Space between icon and text
+          Column(
+            crossAxisAlignment:
+                CrossAxisAlignment.start, // Align text to the left
+            mainAxisSize: MainAxisSize.min, // Minimize column height
+            children: [
+              Text(
+                "₹Get 201",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.green,
+                ),
               ),
-            ),
-            SizedBox(height: 5),
-            Text(
-              "Refer a friend",
-              style: TextStyle(
-                color: Colors.green,
-                fontSize: 10,
+              Text(
+                "Refer a friend",
+                style: TextStyle(
+                  color: Colors.green,
+                  fontSize: 12,
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
