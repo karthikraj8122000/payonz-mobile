@@ -14,7 +14,11 @@ class BankGridItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(bank.icon, size: 40, color: AppColors.card1),
+          // Icon(bank.logo, size: 40, color: AppColors.card1),
+          CircleAvatar(
+            backgroundColor: Colors.transparent,
+            backgroundImage: AssetImage(bank.logo),
+          ),
           SizedBox(height: 8),
           Text(
             bank.name,
@@ -29,7 +33,7 @@ class BankGridItem extends StatelessWidget {
 
 class MyBank {
   final String name;
-  final IconData icon;
+  final String logo;
 
-  MyBank({required this.name, required this.icon});
+  MyBank({required this.name, required this.logo});
 }
