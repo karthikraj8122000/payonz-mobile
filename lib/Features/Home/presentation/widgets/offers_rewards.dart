@@ -1,9 +1,9 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:payonz/Features/Home/data/models/offers_model.dart';
 import 'package:payonz/Features/Home/presentation/providers/offers_provider.dart';
+import 'package:payonz/Features/Home/presentation/screens/refer-friends.dart';
 import 'package:payonz/Features/Home/presentation/screens/rewards.dart';
 import 'package:provider/provider.dart';
 
@@ -58,8 +58,19 @@ class _OffersAndRewardsState extends State<OffersAndRewards> {
   Widget _buildOfferItem(OffersModel offer) {
     return GestureDetector(
       onTap: (){
-        GoRouter.of(context).push(RewardScreen.routeName);
-      },
+        if(offer.name == "Rewards"){
+          GoRouter.of(context).push(RewardScreen.routeName);
+        }
+        else if(offer.name == "Offers"){
+          print("Offers");
+        }
+        else if(offer.name == "Referrals"){
+          GoRouter.of(context).push(ReferFriends.routeName);
+        }
+        else if(offer.name == "Tez Shots"){
+          print("Tez Shots");
+        }
+        },
       child: Column(
         children: [
           CircleAvatar(

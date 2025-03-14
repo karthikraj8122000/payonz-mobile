@@ -5,6 +5,7 @@ import 'package:payonz/Features/Home/presentation/widgets/contact_list.dart';
 import 'package:payonz/Features/Home/presentation/widgets/quick_actions.dart';
 import 'package:payonz/Features/Home/presentation/widgets/wallet_card.dart';
 import 'package:payonz/Features/Profile/presentation/screens/profile.dart';
+import 'package:payonz/Shared/widgets/exit_app.dart';
 
 import '../../../Transaction/presentation/screens/transaction.dart';
 import '../widgets/offers_rewards.dart';
@@ -15,84 +16,86 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
-        child: AppBar(
-          automaticallyImplyLeading: false,
-          title: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    // keyboardType: TextInputType.number,
-                    cursorColor: AppColors.card1,
-                    decoration: InputDecoration(
-                      hintText: "Pay by name or phone Number ",
-                      prefixIcon: Icon(Icons.search),
-                      // border: OutlineInputBorder(),
-                      filled: true,
-                      fillColor: AppColors.card1.withOpacity(0.1),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.transparent), // Define border color
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(10)), // No border radius
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: AppColors.card1), // Border color on focus
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(10)), // No border radius
+    return ExitAppHandler(
+      child: Scaffold(
+        backgroundColor: AppColors.white,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(kToolbarHeight),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            title: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      // keyboardType: TextInputType.number,
+                      cursorColor: AppColors.card1,
+                      decoration: InputDecoration(
+                        hintText: "Pay by name or phone Number ",
+                        prefixIcon: Icon(Icons.search),
+                        // border: OutlineInputBorder(),
+                        filled: true,
+                        fillColor: AppColors.card1.withOpacity(0.1),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Colors.transparent), // Define border color
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(10)), // No border radius
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: AppColors.card1), // Border color on focus
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(10)), // No border radius
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          centerTitle: false,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 15),
-              child: GestureDetector(
-                onTap: () => GoRouter.of(context).push(ProfilePage.routeName),
-                child: CircleAvatar(
-                  radius: 20,
-                  child: ClipOval(
-                    child: Image.network(
-                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGD0BcxwuvdI1H-S35GmT43vP2MBIdCgyeIA&s',
-                      fit: BoxFit.cover,
+            centerTitle: false,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 15),
+                child: GestureDetector(
+                  onTap: () => GoRouter.of(context).push(ProfilePage.routeName),
+                  child: CircleAvatar(
+                    radius: 20,
+                    child: ClipOval(
+                      child: Image.network(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGD0BcxwuvdI1H-S35GmT43vP2MBIdCgyeIA&s',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 24),
-              Container(
-                  padding: EdgeInsets.all(12),
-                  width: double.infinity,
-                  child: FlipableWalletCard()),
-              const SizedBox(height: 24),
-              const QuickActions(),
-              const SizedBox(height: 20),
-              const ContactList(),
-              const SizedBox(height: 20),
-              OffersAndRewards(),
-              _recentTransactionSection(context),
-              _inviteSection()
             ],
+          ),
+        ),
+        body: SafeArea(
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 24),
+                Container(
+                    padding: EdgeInsets.all(12),
+                    width: double.infinity,
+                    child: FlipableWalletCard()),
+                const SizedBox(height: 24),
+                const QuickActions(),
+                const SizedBox(height: 20),
+                const ContactList(),
+                const SizedBox(height: 20),
+                OffersAndRewards(),
+                _recentTransactionSection(context),
+                _inviteSection()
+              ],
+            ),
           ),
         ),
       ),
@@ -105,7 +108,7 @@ class DashboardPage extends StatelessWidget {
       children: [
         ColorFiltered(
           colorFilter: ColorFilter.mode(
-            Colors.white.withOpacity(0.8), // Adjust opacity
+            Colors.white.withOpacity(0.9), // Adjust opacity
             BlendMode.srcATop,
           ),
           child: Image.asset(

@@ -4,6 +4,7 @@ import 'package:payonz/Features/Bank/presentation/screens/add_bank_account.dart'
 import 'package:payonz/Features/Bank/presentation/screens/bank_account_splash.dart';
 import 'package:payonz/Features/CardConfig/presentation/screens/card-config.dart';
 import 'package:payonz/Features/Home/presentation/screens/dashboard.dart';
+import 'package:payonz/Features/Home/presentation/screens/refer-friends.dart';
 import 'package:payonz/Features/Home/presentation/screens/rewards.dart';
 import 'package:payonz/Features/Profile/presentation/screens/profile.dart';
 import 'package:payonz/Features/QRPayment/presentation/screens/new_payment_screen.dart';
@@ -83,6 +84,11 @@ class AppRouter {
         name: NewPaymentScreen.routeName,
         path: NewPaymentScreen.routeName,
         builder: (_, __) =>  NewPaymentScreen(),
+      ),
+      GoRoute(
+        name: ReferFriends.routeName,
+        path: ReferFriends.routeName,
+        builder: (_, __) =>  ReferFriends(),
       ),
 
     ],

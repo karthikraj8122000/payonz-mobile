@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:payonz/Features/Bank/presentation/screens/bank_account_splash.dart';
+import 'package:payonz/Features/Home/presentation/screens/dashboard.dart';
 
 class SimSelection extends StatefulWidget {
   static const String routeName = '/sim-selection';
@@ -111,13 +112,16 @@ class _SimSelectionState extends State<SimSelection> with SingleTickerProviderSt
           duration: const Duration(seconds: 2),
         ),
       );
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => BankAccountsScreen(),
+      //     ));
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => BankAccountsScreen(),
+            builder: (context) => DashboardPage(),
           ));
-      // In a real app, you would navigate to the next registration screen here
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationScreen(sim: selectedSim)));
     }
   }
 
@@ -186,49 +190,6 @@ class _SimSelectionState extends State<SimSelection> with SingleTickerProviderSt
                               shape: BoxShape.circle,
                             ),
                           ),
-                          // AnimatedBuilder(
-                          //   animation: _controller,
-                          //   builder: (context, child) {
-                          //     return Transform.scale(
-                          //       scale: _scaleAnimation.value,
-                          //       child: Container(
-                          //         width: 80,
-                          //         height: 80,
-                          //         decoration: BoxDecoration(
-                          //           color: selectedSim!.brandColor.withOpacity(0.2),
-                          //           shape: BoxShape.circle,
-                          //         ),
-                          //         child: Center(
-                          //           child: Container(
-                          //             width: 60,
-                          //             height: 60,
-                          //             decoration: BoxDecoration(
-                          //               color: selectedSim!.brandColor,
-                          //               shape: BoxShape.circle,
-                          //               boxShadow: [
-                          //                 BoxShadow(
-                          //                   color: selectedSim!.brandColor.withOpacity(0.3),
-                          //                   blurRadius: 10,
-                          //                   spreadRadius: 2,
-                          //                 ),
-                          //               ],
-                          //             ),
-                          //             child: Center(
-                          //               child: Text(
-                          //                 selectedSim!.provider[0],
-                          //                 style: const TextStyle(
-                          //                   fontSize: 24,
-                          //                   fontWeight: FontWeight.bold,
-                          //                   color: Colors.white,
-                          //                 ),
-                          //               ),
-                          //             ),
-                          //           ),
-                          //         ),
-                          //       ),
-                          //     );
-                          //   },
-                          // ),
                           AnimatedBuilder(
                             animation: _controller,
                             builder: (context, child) {
