@@ -102,7 +102,7 @@ class DashboardPage extends StatelessWidget {
       children: [
         ColorFiltered(
           colorFilter: ColorFilter.mode(
-            Colors.white.withOpacity(0.8), // Adjust opacity
+            Colors.white.withOpacity(0.9), // Adjust opacity
             BlendMode.srcATop,
           ),
           child: Image.asset(
@@ -112,7 +112,6 @@ class DashboardPage extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
